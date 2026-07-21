@@ -11,3 +11,4 @@ dev.db-journal
 Dockerfile
 docker-compose.yml
 .git
+*.tsbuildinfo
