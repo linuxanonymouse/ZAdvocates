@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../../lib/api';
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -126,7 +127,7 @@ export default async function PracticeAreaDetail({
   } | null = null;
 
   try {
-    const res = await fetch(`http://localhost:4001/practice-areas/${id}`, {
+    const res = await fetch(getApiUrl(`/practice-areas/${id}`), {
       cache: "no-store",
     });
     if (res.ok) {

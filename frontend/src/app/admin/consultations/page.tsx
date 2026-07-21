@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../lib/api';
 "use client";
 
 import { useEffect, useState } from "react";
@@ -12,7 +13,7 @@ export default function ConsultationsAdmin() {
   const fetchConsultations = async () => {
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await fetch("http://localhost:4001/consultations", {
+      const res = await fetch(getApiUrl('/consultations'), {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -27,7 +28,7 @@ export default function ConsultationsAdmin() {
   const handleStatusChange = async (id: number, status: string) => {
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:4001/consultations/${id}/status`, {
+      await fetch(getApiUrl(`/consultations/${id}/status`), {
         method: "PATCH",
         headers: { 
           "Content-Type": "application/json",
@@ -45,7 +46,7 @@ export default function ConsultationsAdmin() {
     if (!confirm("Are you sure you want to delete this consultation?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:4001/consultations/${id}`, {
+      await fetch(getApiUrl(`/consultations/${id}`), {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

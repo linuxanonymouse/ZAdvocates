@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../lib/api';
 "use client";
 
 import { useEffect, useState } from "react";
@@ -7,7 +8,7 @@ export default function InsightsAdmin() {
   const [insights, setInsights] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4001/insights")
+    fetch(getApiUrl('/insights'))
       .then((res) => res.json())
       .then((data) => setInsights(data))
       .catch(console.error);
@@ -17,7 +18,7 @@ export default function InsightsAdmin() {
     if (!confirm("Are you sure you want to delete this insight?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:4001/insights/${id}`, {
+      await fetch(getApiUrl(`/insights/${id}`), {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

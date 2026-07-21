@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../../lib/api';
 "use client";
 
 import { useState } from "react";
@@ -30,7 +31,7 @@ export default function NewPracticeArea() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await fetch("http://localhost:4001/practice-areas", {
+      const res = await fetch(getApiUrl('/practice-areas'), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

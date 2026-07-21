@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../lib/api';
 import Link from "next/link";
 
 const FALLBACK_AREAS = [
@@ -54,7 +55,7 @@ const FALLBACK_AREAS = [
 export default async function PracticeAreasPage() {
   let areas: typeof FALLBACK_AREAS = [];
   try {
-    const res = await fetch("http://localhost:4001/practice-areas", {
+    const res = await fetch(getApiUrl('/practice-areas'), {
       cache: "no-store",
     });
     const data = res.ok ? await res.json() : [];

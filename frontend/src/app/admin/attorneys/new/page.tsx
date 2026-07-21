@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../../lib/api';
 "use client";
 
 import { useState } from "react";
@@ -16,7 +17,7 @@ export default function NewAttorney() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await fetch("http://localhost:4001/attorneys", {
+      const res = await fetch(getApiUrl('/attorneys'), {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

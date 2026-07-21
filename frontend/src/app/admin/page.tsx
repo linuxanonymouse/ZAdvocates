@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../lib/api';
 "use client";
 
 import { useEffect, useState } from "react";
@@ -7,7 +8,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<any>(null);
 
   useEffect(() => {
-    fetch("http://localhost:4001/stats", {
+    fetch(getApiUrl('/stats'), {
       headers: { Authorization: `Bearer ${localStorage.getItem("admin_token")}` }
     })
       .then(res => res.json())

@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../../lib/api';
 "use client";
 
 import { useState } from "react";
@@ -15,7 +16,7 @@ export default function NewInsight() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await fetch("http://localhost:4001/insights", {
+      const res = await fetch(getApiUrl('/insights'), {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

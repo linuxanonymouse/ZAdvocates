@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../lib/api';
 "use client";
 
 import { useEffect, useState } from "react";
@@ -7,7 +8,7 @@ export default function AttorneysAdmin() {
   const [attorneys, setAttorneys] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4001/attorneys")
+    fetch(getApiUrl('/attorneys'))
       .then((res) => res.json())
       .then((data) => setAttorneys(data))
       .catch(console.error);
@@ -17,7 +18,7 @@ export default function AttorneysAdmin() {
     if (!confirm("Are you sure you want to delete this attorney?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:4001/attorneys/${id}`, {
+      await fetch(getApiUrl(`/attorneys/${id}`), {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

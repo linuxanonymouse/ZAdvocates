@@ -1,3 +1,4 @@
+import { getApiUrl } from '../../../lib/api';
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,7 +9,7 @@ export default function InsightsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4001/insights")
+    fetch(getApiUrl('/insights'))
       .then(res => res.ok ? res.json() : [])
       .then(data => { setInsights(data); setLoading(false); })
       .catch(() => setLoading(false));

@@ -1,5 +1,6 @@
+import { getApiUrl } from '../../../lib/api';
 export default async function AttorneysPage() {
-  const res = await fetch("http://localhost:4001/attorneys", { cache: "no-store" });
+  const res = await fetch(getApiUrl('/attorneys'), { cache: "no-store" });
   const attorneys = res.ok ? await res.json() : [];
 
   return (
