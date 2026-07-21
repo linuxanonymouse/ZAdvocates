@@ -54,7 +54,7 @@ const FALLBACK_AREAS = [
 export default async function PracticeAreasPage() {
   let areas: typeof FALLBACK_AREAS = [];
   try {
-    const res = await fetch("http://localhost:3001/practice-areas", {
+    const res = await fetch("http://localhost:4001/practice-areas", {
       cache: "no-store",
     });
     const data = res.ok ? await res.json() : [];

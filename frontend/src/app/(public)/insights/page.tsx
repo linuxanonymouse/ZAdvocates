@@ -8,7 +8,7 @@ export default function InsightsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3001/insights")
+    fetch("http://localhost:4001/insights")
       .then(res => res.ok ? res.json() : [])
       .then(data => { setInsights(data); setLoading(false); })
       .catch(() => setLoading(false));

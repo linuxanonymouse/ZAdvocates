@@ -34,7 +34,7 @@ export default function SchedulePage() {
     setStatus("submitting");
 
     try {
-      const res = await fetch("http://localhost:3001/consultations", {
+      const res = await fetch("http://localhost:4001/consultations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

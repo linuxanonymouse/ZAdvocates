@@ -7,7 +7,7 @@ export default function InsightsAdmin() {
   const [insights, setInsights] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/insights")
+    fetch("http://localhost:4001/insights")
       .then((res) => res.json())
       .then((data) => setInsights(data))
       .catch(console.error);
@@ -17,7 +17,7 @@ export default function InsightsAdmin() {
     if (!confirm("Are you sure you want to delete this insight?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:3001/insights/${id}`, {
+      await fetch(`http://localhost:4001/insights/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

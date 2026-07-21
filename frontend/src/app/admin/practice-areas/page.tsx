@@ -7,7 +7,7 @@ export default function PracticeAreasAdmin() {
   const [areas, setAreas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/practice-areas")
+    fetch("http://localhost:4001/practice-areas")
       .then((res) => res.json())
       .then((data) => setAreas(data))
       .catch(console.error);
@@ -17,7 +17,7 @@ export default function PracticeAreasAdmin() {
     if (!confirm("Are you sure you want to delete this practice area?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:3001/practice-areas/${id}`, {
+      await fetch(`http://localhost:4001/practice-areas/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

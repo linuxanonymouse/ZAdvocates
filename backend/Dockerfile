@@ -24,7 +24,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 
 # Expose port
-EXPOSE 3001
+EXPOSE 4001
 
 # Run migrations and start app
 CMD ["sh", "-c", "npx prisma db push && npm run start:prod"]

@@ -7,7 +7,7 @@ export default function AttorneysAdmin() {
   const [attorneys, setAttorneys] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/attorneys")
+    fetch("http://localhost:4001/attorneys")
       .then((res) => res.json())
       .then((data) => setAttorneys(data))
       .catch(console.error);
@@ -17,7 +17,7 @@ export default function AttorneysAdmin() {
     if (!confirm("Are you sure you want to delete this attorney?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await fetch(`http://localhost:3001/attorneys/${id}`, {
+      await fetch(`http://localhost:4001/attorneys/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

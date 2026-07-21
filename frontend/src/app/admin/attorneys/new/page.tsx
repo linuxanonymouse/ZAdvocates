@@ -16,7 +16,7 @@ export default function NewAttorney() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await fetch("http://localhost:3001/attorneys", {
+      const res = await fetch("http://localhost:4001/attorneys", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

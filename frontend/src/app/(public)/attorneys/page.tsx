@@ -1,5 +1,5 @@
 export default async function AttorneysPage() {
-  const res = await fetch("http://localhost:3001/attorneys", { cache: "no-store" });
+  const res = await fetch("http://localhost:4001/attorneys", { cache: "no-store" });
   const attorneys = res.ok ? await res.json() : [];
 
   return (

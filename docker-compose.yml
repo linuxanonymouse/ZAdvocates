@@ -6,7 +6,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "4001:4001"
     environment:
       - DATABASE_URL=file:./dev.db
     volumes:
@@ -17,7 +17,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "4000:4000"
     depends_on:
       - backend
 
