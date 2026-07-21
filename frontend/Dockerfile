@@ -8,6 +8,8 @@ RUN npm ci
 
 # Copy source and build
 COPY . .
+ARG BACKEND_URL="http://backend:4001"
+ENV BACKEND_URL=$BACKEND_URL
 RUN npm run build
 
 # Production image
