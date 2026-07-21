@@ -13,14 +13,14 @@ export class ConsultationsService {
     return this.prisma.consultation.findMany({ orderBy: { createdAt: 'desc' } });
   }
 
-  async updateStatus(id: number, status: string) {
+  async updateStatus(id: string, status: string) {
     return this.prisma.consultation.update({
       where: { id },
       data: { status },
     });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return this.prisma.consultation.delete({ where: { id } });
   }
 }

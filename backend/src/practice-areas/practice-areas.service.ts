@@ -18,10 +18,9 @@ export class PracticeAreasService {
   }
 
   findOne(idOrSlug: string) {
-    const numericId = parseInt(idOrSlug, 10);
-    if (!Number.isNaN(numericId)) {
+    if (/^[0-9a-fA-F]{24}$/.test(idOrSlug)) {
       return this.prisma.practiceArea.findUnique({
-        where: { id: numericId },
+        where: { id: idOrSlug },
         include: { attorneys: true },
       });
     }
@@ -31,14 +30,14 @@ export class PracticeAreasService {
     });
   }
 
-  update(id: number, updatePracticeAreaDto: UpdatePracticeAreaDto) {
+  update(id: string, updatePracticeAreaDto: UpdatePracticeAreaDto) {
     return this.prisma.practiceArea.update({
       where: { id },
       data: updatePracticeAreaDto,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.practiceArea.delete({
       where: { id }
     });

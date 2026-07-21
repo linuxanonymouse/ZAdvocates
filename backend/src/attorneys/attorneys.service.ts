@@ -17,21 +17,21 @@ export class AttorneysService {
     return this.prisma.attorney.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.attorney.findUnique({
       where: { id },
       include: { practiceAreas: true }
     });
   }
 
-  update(id: number, updateAttorneyDto: UpdateAttorneyDto) {
+  update(id: string, updateAttorneyDto: UpdateAttorneyDto) {
     return this.prisma.attorney.update({
       where: { id },
       data: updateAttorneyDto,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.attorney.delete({
       where: { id }
     });

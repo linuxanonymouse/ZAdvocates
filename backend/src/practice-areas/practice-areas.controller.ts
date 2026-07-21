@@ -31,12 +31,12 @@ export class PracticeAreasController {
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePracticeAreaDto: UpdatePracticeAreaDto) {
-    return this.practiceAreasService.update(+id, updatePracticeAreaDto);
+    return this.practiceAreasService.update(id, updatePracticeAreaDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.practiceAreasService.remove(+id);
+    return this.practiceAreasService.remove(id);
   }
 }

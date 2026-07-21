@@ -20,12 +20,12 @@ export class ConsultationsController {
   @UseGuards(JwtAuthGuard)
   @Patch(':id/status')
   updateStatus(@Param('id') id: string, @Body('status') status: string) {
-    return this.consultationsService.updateStatus(+id, status);
+    return this.consultationsService.updateStatus(id, status);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.consultationsService.remove(+id);
+    return this.consultationsService.remove(id);
   }
 }

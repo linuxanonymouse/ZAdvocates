@@ -19,20 +19,20 @@ export class InsightsService {
     });
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.insight.findUnique({
       where: { id }
     });
   }
 
-  update(id: number, updateInsightDto: UpdateInsightDto) {
+  update(id: string, updateInsightDto: UpdateInsightDto) {
     return this.prisma.insight.update({
       where: { id },
       data: updateInsightDto,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.insight.delete({
       where: { id }
     });

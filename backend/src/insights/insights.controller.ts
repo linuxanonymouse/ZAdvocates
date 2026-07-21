@@ -21,18 +21,18 @@ export class InsightsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.insightsService.findOne(+id);
+    return this.insightsService.findOne(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateInsightDto: UpdateInsightDto) {
-    return this.insightsService.update(+id, updateInsightDto);
+    return this.insightsService.update(id, updateInsightDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.insightsService.remove(+id);
+    return this.insightsService.remove(id);
   }
 }

@@ -21,18 +21,18 @@ export class AttorneysController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.attorneysService.findOne(+id);
+    return this.attorneysService.findOne(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAttorneyDto: UpdateAttorneyDto) {
-    return this.attorneysService.update(+id, updateAttorneyDto);
+    return this.attorneysService.update(id, updateAttorneyDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.attorneysService.remove(+id);
+    return this.attorneysService.remove(id);
   }
 }

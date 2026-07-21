@@ -8,12 +8,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
   password  String
   name      String?
@@ -21,21 +21,22 @@ model User {
 }
 
 model Attorney {
-  id          Int      @id @default(autoincrement())
-  name        String
-  title       String
-  bio         String
-  imageUrl    String?
-  email       String?
-  phone       String?
-  linkedinUrl String?
-  practiceAreas PracticeArea[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              String         @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  title           String
+  bio             String
+  imageUrl        String?
+  email           String?
+  phone           String?
+  linkedinUrl     String?
+  practiceAreaIds String[]       @db.ObjectId
+  practiceAreas   PracticeArea[] @relation(fields: [practiceAreaIds], references: [id])
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Insight {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   category    String
   content     String
@@ -46,19 +47,20 @@ model Insight {
 }
 
 model PracticeArea {
-  id          Int      @id @default(autoincrement())
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  slug        String   @unique
+  slug        String     @unique
   description String
   content     String?
   iconUrl     String?
-  attorneys   Attorney[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  attorneyIds String[]   @db.ObjectId
+  attorneys   Attorney[] @relation(fields: [attorneyIds], references: [id])
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 model Consultation {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   email     String
   phone     String?
@@ -66,4 +68,3 @@ model Consultation {
   status    String   @default("pending")
   createdAt DateTime @default(now())
 }
-
